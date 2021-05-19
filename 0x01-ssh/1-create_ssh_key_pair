@@ -1,4 +1,2 @@
 #!/usr/bin/env bash
-#Script bash creates new ssh key
-
 ssh-keygen -t rsa -N betty -b 4096 -f holberton
