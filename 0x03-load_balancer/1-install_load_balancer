@@ -39,7 +39,7 @@ defaults
 listen www        
    bind :80                                                                                                                  
         balance roundrobin                                                                                                        
-        server gc-3161-web-02 35.237.17.86:80 check                                                                     
+        server gc-3161-web-02 104.196.174.128:80 check                                                                     
         server gc-3161-web-01 35.243.156.27:80 check      
 " > /etc/haproxy/haproxy.cfg
 
