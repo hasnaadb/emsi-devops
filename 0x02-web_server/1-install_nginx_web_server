@@ -1,7 +1,19 @@
 #!/usr/bin/env bash 
-# configuring a new ubuntu machine to respect requirements
-apt-get -y update
-apt-get -y install nginx
-sed -i '0,/listen .*/s//listen 80 default_server;/' /etc/nginx/sites-available/default
-echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
+# Intsaltion of Nginx
+apt-get update -y 
+apt-get install -y nginx
+mkdir /usr/share/nginx/web
+touch /usr/share/nginx/web/index.html
+echo "Holberton School" > /usr/share/nginx/web/index.html
+printf %s "
+    server {
+        listen      80 default_server;
+        listen      [::]:80 default_server;
+        location / {
+            root      /usr/share/nginx/web/;
+            index     index.html;
+        }
+      
+    }
+" > /etc/nginx/sites-available/default
 service nginx restart
