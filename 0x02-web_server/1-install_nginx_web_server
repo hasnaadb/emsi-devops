@@ -1,19 +1,6 @@
-#!/usr/bin/env bash 
-# Intsaltion of Nginx
-apt-get update -y 
-apt-get install -y nginx
-mkdir /usr/share/nginx/web
-touch /usr/share/nginx/web/index.html
-echo "Holberton School" > /usr/share/nginx/web/index.html
-printf %s "
-    server {
-        listen      80 default_server;
-        listen      [::]:80 default_server;
-        location / {
-            root      /usr/share/nginx/web/;
-            index     index.html;
-        }
-      
-    }
-" > /etc/nginx/sites-available/default
-service nginx restart
+#!/usr/bin/env bash
+# Install nginx on my web-01 server
+apt-get -y update
+apt-get -y install nginx
+sudo echo 'Holberton School' | sudo tee /var/www/html/index.nginx-debian.html
+service nginx start
