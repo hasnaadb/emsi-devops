@@ -1,2 +1,5 @@
-Connect to server using ssh key
-#0-use_a_private_key : bash script using ssh
+0x01. SSH
+Use a private key
+Create an SSH key pair
+Client configuration file
+Let me in!
