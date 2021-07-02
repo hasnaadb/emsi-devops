@@ -1,40 +1,37 @@
 global
-    log     /dev/log local0
-    maxconn 2048
-    user    haproxy
-    group   haproxy
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    user haproxy
+    group haproxy
+    daemon
     tune.ssl.default-dh-param 2048
 
 defaults
-    log     global
-    mode    http
-    option  httplog
-    option  dontlognull
-    retries 3
-    option  redispatch
-    timeout connect  5000
-    timeout client  10000
-    timeout server  10000
-    option  forwardfor
-    option  http-server-close
+    log global
+    mode http
+    option httplog
+    option dontlognull
+    timeout connect 5000
+    timeout client 50000
+    timeout server 50000
 
-frontend www-http
-    bind   0.0.0.0:80
-    reqadd X-Forwarded-Proto:\ http
-    default_backend www-backend
+frontend lb-server
+    bind *:80
+    default_backend app-server
 
-frontend www-https
-    bind   0.0.0.0:443 ssl crt /etc/haproxy/certs/www.danzina.tech.pem
+frontend lb-server-https
+    bind *:443 ssl crt /etc/letsencrypt/elhadiri.tech.pem
     reqadd X-Forwarded-Proto:\ https
-    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
     use_backend letsencrypt-backend if letsencrypt-acl
-    default_backend www-backend
+    default_backend app-server
 
-backend www-backend
-    balance  roundrobin
+backend app-server
+    balance roundrobin
     redirect scheme https if !{ ssl_fc }
-    server 3131-web-01 3.90.27.81:80 check
-    server 3131-web-02 34.74.236.125:80 check
+    server 3157-web-01 54.89.69.183:80 check
+    server 3157-web-02 35.196.147.250:80 check
 
 backend letsencrypt-backend
-    server letsencrypt 127.0.0.1:54321
+    server letsencrypt 127.0.0.1:8080
