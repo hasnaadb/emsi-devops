@@ -1,0 +1,33 @@
+total 124
+drwxrwxr-x  2 ubuntu ubuntu 4096 يول  1 22:44 .
+drwxrwxr-x 14 ubuntu ubuntu 4096 يول  1 22:22 ..
+-rwxrwxr-x  1 ubuntu ubuntu   38 يول  1 22:22 0-hello_world
+-rwxrwxr-x  1 ubuntu ubuntu   41 يول  1 22:22 100-empty_casks
+-rwxrwxr-x  1 ubuntu ubuntu  107 يول  1 22:22 101-gifs
+-rwxrwxr-x  1 ubuntu ubuntu   46 يول  1 22:22 102-acrostic
+-rwxrwxr-x  1 ubuntu ubuntu  103 يول  1 22:22 103-the_biggest_fan
+-rwxrwxr-x  1 ubuntu ubuntu   48 يول  1 22:22 10-no_more_js
+-rwxrwxr-x  1 ubuntu ubuntu   37 يول  1 22:22 11-directories
+-rw-rw-r--  1 ubuntu ubuntu   44 يول  1 22:22 12-newest_files
+-rwxrwxr-x  1 ubuntu ubuntu   27 يول  1 22:22 13-unique
+-rwxrwxr-x  1 ubuntu ubuntu   34 يول  1 22:22 14-findthatword
+-rwxrwxr-x  1 ubuntu ubuntu   41 يول  1 22:22 15-countthatword
+-rwxrwxr-x  1 ubuntu ubuntu   39 يول  1 22:22 16-whatsnext
+-rwxrwxr-x  1 ubuntu ubuntu   36 يول  1 22:22 17-hidethisword
+-rwxrwxr-x  1 ubuntu ubuntu   56 يول  1 22:22 18-letteronly
+-rwxrwxr-x  1 ubuntu ubuntu   36 يول  1 22:22 19-AZ
+-rwxrwxr-x  1 ubuntu ubuntu   28 يول  1 22:22 1-confused_smiley
+-rwxrwxr-x  1 ubuntu ubuntu   42 يول  1 22:22 20-hiago
+-rwxrwxr-x  1 ubuntu ubuntu   16 يول  1 22:22 21-reverse
+-rwxrwxr-x  1 ubuntu ubuntu   49 يول  1 22:22 22-users_and_homes
+-rwxrwxr-x  1 ubuntu ubuntu   28 يول  1 22:22 2-hellofile
+-rwxrwxr-x  1 ubuntu ubuntu   39 يول  1 22:22 3-twofiles
+-rwxrwxr-x  1 ubuntu ubuntu   35 يول  1 22:22 4-lastlines
+-rwxrwxr-x  1 ubuntu ubuntu   35 يول  1 22:22 5-firstlines
+-rwxrwxr-x  1 ubuntu ubuntu   40 يول  1 22:22 6-third_line
+-rwxrwxr-x  1 ubuntu ubuntu   97 يول  1 22:22 7-file
+-rwxrwxr-x  1 ubuntu ubuntu   42 يول  1 22:22 8-cwd_state
+-rwxrwxr-x  1 ubuntu ubuntu   37 يول  1 22:22 9-duplicate_last_line
+-rw-rw-r--  1 ubuntu ubuntu   17 يول  1 22:44 \*\\'"Holberton School"\'\\*$\?\*\*\*\*\*:)
+-rw-rw-r--  1 ubuntu ubuntu    0 يول  1 22:44 ls_cwd_content
+-rw-rw-r--  1 ubuntu ubuntu   19 يول  1 22:22 README.md
