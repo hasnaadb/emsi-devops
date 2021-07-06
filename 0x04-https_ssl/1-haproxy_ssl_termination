@@ -1,19 +1,14 @@
 global
-        log /dev/log    local0
-        log /dev/log    local1 notice
-        chroot /var/lib/haproxy
-        stats socket /run/haproxy/admin.sock mode 660 level admin
-        stats timeout 30s
-        user haproxy
-        group haproxy
-        daemon
-        ca-base /etc/ssl/certs
-        crt-base /etc/ssl/private
-
-        ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS          
-        ssl-default-bind-options no-sslv3
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    user haproxy
+    group haproxy
+    daemon
+    tune.ssl.default-dh-param 2048
 
 defaults
+<<<<<<< HEAD
         log     global
         mode    http
         option  httplog
@@ -40,13 +35,32 @@ frontend www-https
     bind   *:443 ssl crt /etc/haproxy/certs/azimhasnaausa.tech.pem
     reqadd X-Forwarded-Proto:\ http
     acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt-backend if letsencrypt-acl
-    default_backend www-backend
+=======
+    log global
+    mode http
+    option httplog
+    option dontlognull
+    timeout connect 5000
+    timeout client 50000
+    timeout server 50000
 
-backend www-backend
-        balance roundrobin
-        server gc-3161-web-02-1617751021 104.196.174.128:80 check
-        server gc-3161-web-01-1618037739 35.243.156.27:80 check
+frontend lb-server
+    bind *:80
+    default_backend app-server
+
+frontend lb-server-https
+    bind *:443 ssl crt /etc/letsencrypt/azimhasnaausa.tech.pem
+    reqadd X-Forwarded-Proto:\ https
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+>>>>>>> d83b2a4d2c331c104ad4da3d01b1a442ceee0e1f
+    use_backend letsencrypt-backend if letsencrypt-acl
+    default_backend app-server
+
+backend app-server
+    balance roundrobin
+    redirect scheme https if !{ ssl_fc }
+    server 3161-web-01 35.243.156.27:80 check
+    server 3161-web-02 104.196.174.128:80 check
 
 backend letsencrypt-backend
-    server letsencrypt 127.0.0.1:54321
+    server letsencrypt 127.0.0.1:8080
